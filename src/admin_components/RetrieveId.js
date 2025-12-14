@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/retrieveid.css";
 import { checkAuth } from "../auth/checkAuth";
@@ -15,7 +15,7 @@ const UserDetails = () => {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`/retrieve/${id}`, {
+        const res = await api.get(`/retrieve/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -34,7 +34,7 @@ const UserDetails = () => {
     try {
       const token = localStorage.getItem("token"); // ✔ FIXED
 
-      await axios.delete(`/delete/${id}`, {
+      await api.delete(`/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import "../styles/player.css";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../navbar";
@@ -24,7 +24,7 @@ const AdminPlayersList = () => {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await axios.get("/admin/player", {
+        const res = await api.get("/admin/player", {
           headers: { Authorization: `Bearer ${token}` },
         });
 

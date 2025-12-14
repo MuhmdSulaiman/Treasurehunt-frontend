@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api";
 import "../styles/Login.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -27,7 +27,7 @@ const Login = () => {
     setMessage("");
 
     try {
-      const response = await axios.post("/login", formData);
+      const response = await api.post("/login", formData);
 
       const user = response.data.user;
       const token = response.data.token;

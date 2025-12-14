@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import "../styles/Retrieve.css";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../navbar";
@@ -16,7 +16,7 @@ const AdminUsersList = () => {
     const fetchUsers = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("retrieve", {
+        const res = await api.get("retrieve", {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUsers(res.data.users);

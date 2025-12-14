@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { checkAuth } from "../auth/checkAuth";
 import "../styles/qrGenerate.css"; 
@@ -23,7 +23,7 @@ const GenerateQR = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.post(
+      const res = await api.post(
         "/player/generate-qr",
         { levelNumber, answer }, // send answer, not name
         { headers: { Authorization: `Bearer ${token}` } }

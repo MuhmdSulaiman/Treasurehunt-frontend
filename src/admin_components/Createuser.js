@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api";
 import "../styles/createUser.css"; 
 import { useNavigate } from "react-router-dom";
 import { checkAuth } from "../auth/checkAuth";
-
 
 const AdminCreateUser = () => {
   const [formData, setFormData] = useState({
@@ -29,7 +28,7 @@ const AdminCreateUser = () => {
 
     try {
       const token = localStorage.getItem("token"); // Admin JWT token
-      const response = await axios.post("/create", formData, {
+    const response = await api.post("/create", formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

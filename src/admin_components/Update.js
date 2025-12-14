@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/Update.css";
 import { checkAuth } from "../auth/checkAuth";
@@ -24,7 +24,7 @@ const AdminUpdateUser = () => {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`/retrieve/${id}`, {
+        const res = await api.get(`/retrieve/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -55,7 +55,7 @@ const AdminUpdateUser = () => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.put(`/update/${id}`, user, {
+      await api.put(`/update/${id}`, user, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

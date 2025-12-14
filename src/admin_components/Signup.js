@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api";
 import "../styles/Signup.css";
 import { useNavigate } from "react-router-dom";
 
@@ -24,7 +24,7 @@ const Signup = () => {
     setMessage("");
 
     try {
-      const res = await axios.post("/signup", formData);
+      const res = await api.post("/signup", formData);
       setMessage(res.data.message);
       setFormData({ name: "", password: "", role: "", department: "", phonenumber: "" });
     } catch (error) {
