@@ -1,0 +1,44 @@
+/* Places Cards inside each Trail Level */
+.level-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* ✅ adds vertical gap between place-cards */
+  margin-top: 10px;
+}
+
+.place-card {
+  padding: 10px 12px;
+  background-color: #f5f7ff;
+  border-radius: 8px;
+  border-left: 4px solid #647385;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* space between name, answer, and image */
+}
+
+/* Image inside place-card */
+.place-card img {
+  max-width: 200px;
+  display: block;
+  margin-top: 5px;
+  border-radius: 6px;
+}
+
+/* ❗ FULLY RESPONSIVE */
+@media (max-width: 600px) {
+  .trail-level-card {
+    padding: 15px;
+    width: 100%;
+  }
+  .trail-level-card h3 {
+    font-size: 20px;
+  }
+  .place-card {
+    font-size: 13px;
+  }
+  .place-card img {
+    max-width: 100%;
+  }
+}
