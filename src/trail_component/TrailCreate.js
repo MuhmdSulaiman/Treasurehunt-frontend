@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api";
 import "../styles/trail_component.css";
 import Navbar from "../navbar";
 import { useNavigate } from "react-router-dom";
@@ -42,7 +42,7 @@ try {
   formData.append("answer", form.answer.trim());
   if (form.image) formData.append("image", form.image);
 
-  const res = await axios.post("/users/trailCreate", formData, {
+  const res = await api.post("/users/trailCreate", formData, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "multipart/form-data"

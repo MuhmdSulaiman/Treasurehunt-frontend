@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import "../styles/trail_retrieve.css";
 import Navbar from "../navbar";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,7 @@ useEffect(() => {
 const fetchTrails = async () => {
 try {
 const token = localStorage.getItem("token");
-const res = await axios.get("/users/trail", {
+const res = await api.get("/users/trail", {
 headers: { Authorization: `Bearer ${token}` },
 });
 

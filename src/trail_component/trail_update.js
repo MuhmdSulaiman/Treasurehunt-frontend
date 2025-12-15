@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/trailUpdate.css";
 import { checkAuth } from "../auth/checkAuth";
@@ -16,7 +16,7 @@ const TrailUpdate = () => {
     const fetchLevel = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`/users/trail/${id}`, {
+        const res = await api.get(`/users/trail/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -56,7 +56,7 @@ const TrailUpdate = () => {
         formData.append("image", selected.newImage);
       }
 
-      await axios.put(`/users/trail/${id}`, formData, {
+      await api.put(`/users/trail/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

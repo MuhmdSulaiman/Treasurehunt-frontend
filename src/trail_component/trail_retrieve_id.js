@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/trail_retrieve_id.css";
 import { checkAuth } from "../auth/checkAuth";
@@ -21,7 +21,7 @@ return;
 
     const token = localStorage.getItem("token");
 
-    const res = await axios.get(`/users/trail/${id}`, {
+    const res = await api.get(`/users/trail/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -51,7 +51,7 @@ if (!window.confirm("Are you sure you want to delete this level?")) return;
 
 try {
   const token = localStorage.getItem("token");
-  await axios.delete(`/users/trail/${id}`, {
+  await api.delete(`/users/trail/${id}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
 
